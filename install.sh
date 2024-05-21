@@ -169,7 +169,7 @@ install_todo() {
 }
 
 change_default_shell() {
-    if sudo chsh -s "$(which zsh)" && /bin/zsh -i -c 'omz update'; then
+    if sudo chsh -s "$(which zsh)" "$USER" && /bin/zsh -i -c 'omz update'; then
         echo -e "${GREEN}Installation complete, exit terminal and enter a new zsh session${NC}"
         echo -e "${YELLOW}In a new zsh session manually run: build-fzf-tab-module${NC}"
     else
