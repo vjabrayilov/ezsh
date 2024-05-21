@@ -29,6 +29,8 @@ install_zsh_git() {
 backup_old_configs() {
     if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}"; then
         echo -e "${YELLOW}Backed up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
+    else
+        echo -e "${YELLOW}No existing .zshrc found\n${NC}"
     fi
 }
 
