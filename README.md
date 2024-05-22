@@ -9,10 +9,9 @@ Quickly install and setup zsh and [oh-my-zsh](https://github.com/robbyrussell/oh
 * [history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
 * [fzf](https://github.com/junegunn/fzf)
 * [k](https://github.com/supercrabtree/k)
-* [marker](https://github.com/pindexis/marker)
 * [todotxt](https://github.com/todotxt/todo.txt-cli)
 
-Sets following useful aliases and ohmyzsh plugins. 
+Sets following useful aliases and ohmyzsh plugins.
 * l="ls -lah"         - just type "l" instead of "ls -lah"
 * alias k="k -h"	  - show human readable filesizes, in kb, mb etc
 * e="exit"
@@ -29,5 +28,4 @@ Sets following useful aliases and ohmyzsh plugins.
 
 ## Demo
 [![asciicast](https://asciinema.org/a/225226.svg)](https://asciinema.org/a/225226)
-
 

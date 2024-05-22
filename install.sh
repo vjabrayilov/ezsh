@@ -166,20 +166,6 @@ install_fzf_tab() {
     fi
 }
 
-install_marker() {
-    if [ -d ~/.config/ezsh/marker ]; then
-        cd ~/.config/ezsh/marker && git pull
-    else
-        git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker
-    fi
-
-    if ~/.config/ezsh/marker/install.py; then
-        echo -e "${GREEN}Installed Marker\n${NC}"
-    else
-        echo -e "${RED} Failed to install Marker\n${NC}"
-    fi
-}
-
 install_todo() {
     if [ ! -L ~/.config/ezsh/todo/bin/todo.sh ]; then
         echo -e "Installing todo.sh in ~/.config/ezsh/todo\n"
@@ -215,7 +201,6 @@ main() {
     install_fzf
     install_k
     install_fzf_tab
-    install_marker
     install_todo
     change_default_shell
 }
