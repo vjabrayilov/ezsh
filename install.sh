@@ -98,9 +98,35 @@ install_omz_plugins() {
 install_fonts() {
     echo -e "${YELLOW}Installing Nerd Fonts version of Hack, Roboto Mono, DejaVu Sans Mono\n${NC}"
 
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/
+    FONT_DIR="$HOME/.fonts"
+    FONT_FILES=("HackNerdFont-Regular.ttf" "RobotoMonoNerdFont-Regular.ttf" "DejaVuSansMNerdFont-Regular.ttf")
+    FONT_URLS=(
+        "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf"
+        "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf"
+        "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"
+    )
+
+    # Check if the .fonts directory exists
+    if [ ! -d "$FONT_DIR" ]; then
+        echo "Directory $FONT_DIR does not exist. Creating it now."
+        mkdir -p "$FONT_DIR"
+    fi
+
+    # Loop through font files and check if they exist
+    for i in "${!FONT_FILES[@]}"; do
+        FONT_FILE="${FONT_FILES[$i]}"
+        FONT_URL="${FONT_URLS[$i]}"
+
+        if [ ! -f "$FONT_DIR/$FONT_FILE" ]; then
+            echo "File $FONT_FILE does not exist in $FONT_DIR. Downloading it now."
+            wget -q --show-progress -N "$FONT_URL" -P "$FONT_DIR"
+        else
+            echo "File $FONT_FILE already exists in $FONT_DIR. No download needed."
+        fi
+    done
+    # wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/
+    # wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/
+    # wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/
 
     fc-cache -fv ~/.fonts
 }
