@@ -10,16 +10,6 @@
 # Load ezsh configurations
 source "$HOME/.config/ezsh/ezshrc.zsh"
 
-# Any zshrc configurations under the folder ~/.config/ezsh/zshrc/ will override the default ezsh configs.
-# Place all of your personal configurations over there
-ZSH_CONFIGS_DIR="$HOME/.config/ezsh/zshrc"
-
-if [ "$(ls -A $ZSH_CONFIGS_DIR)" ]; then
-    for file in "$ZSH_CONFIGS_DIR"/*; do
-        source "$file"
-    done
-fi
-
 # Now source oh-my-zsh.sh so that any plugins added in ~/.config/ezsh/zshrc/* files also get loaded
 source $ZSH/oh-my-zsh.sh
 
@@ -31,3 +21,14 @@ source $ZSH/oh-my-zsh.sh
 export FZF_DEFAULT_OPS="--extended"
 
 alias k="k -h"       # show human readable file sizes, in kb, mb etc
+
+# Any zshrc configurations under the folder ~/.config/ezsh/zshrc/ will override the default ezsh configs.
+# Place all of your personal configurations over there
+ZSH_CONFIGS_DIR="$HOME/.config/ezsh/zshrc"
+
+if [ "$(ls -A $ZSH_CONFIGS_DIR)" ]; then
+    for file in "$ZSH_CONFIGS_DIR"/*; do
+        source "$file"
+    done
+fi
+
