@@ -168,7 +168,7 @@ function install_marker {
         git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker > /dev/null 2>&1
     fi
 
-    if [["$(uname)" == "Darwin" ]]; then
+    if [[ "$(uname)" == "Darwin" ]]; then
         export SHELL="/bin/zsh"
     else
         export SHELL="/bin/bash"
