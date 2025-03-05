@@ -169,7 +169,7 @@ function install_marker {
     fi
 
     if [["$(uname)" == "Darwin" ]]; then
-        expoert SHELL="/bin/zsh"
+        export SHELL="/bin/zsh"
     else
         export SHELL="/bin/bash"
     fi
