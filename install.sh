@@ -65,7 +65,7 @@ function instal_omz {
         echo -e "${GREEN}oh-my-zsh is already installed\n${NC}"
         git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
     elif [ -d ~/.oh-my-zsh ]; then
-        echo -e "${GREEN}oh-my-zsh in already installed at '~/.oh-my-zsh'. Moving it to '~/.config/ezsh/oh-my-zsh'${NC}"
+        echo -e "${GREEN}oh-my-zsh in already installed at '~/.oh-my-zsh'. Moving it to '~/.config/ezsh/oh-my-zsh'\n${NC}"
         export ZSH="$HOME/.config/ezsh/oh-my-zsh"
         mv ~/.oh-my-zsh ~/.config/ezsh/oh-my-zsh
         git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
@@ -181,7 +181,7 @@ function install_todo {
         mkdir -p ~/.config/ezsh/bin
         mkdir -p ~/.config/ezsh/todo
         wget -q --show-progress "https://github.com/todotxt/todo.txt-cli/releases/download/v2.12.0/todo.txt_cli-2.12.0.tar.gz" -P ~/.config/ezsh/ > /dev/null 2>&1
-        tar xvf ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz -C ~/.config/ezsh/todo --strip 1 && rm ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz
+        tar xvf ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz -C ~/.config/ezsh/todo --strip 1 && rm ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz > /dev/null 2>&1
         ln -s -f ~/.config/ezsh/todo/todo.sh ~/.config/ezsh/bin/todo.sh     # so only .../bin is included in $PATH
         ln -s -f ~/.config/ezsh/todo/todo.cfg ~/.todo.cfg     # it expects it there or ~/todo.cfg or ~/.todo/config
     else
