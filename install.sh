@@ -71,7 +71,7 @@ function instal_omz {
         git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
     else
         git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.config/ezsh/oh-my-zsh > /dev/null 2>&1
-        echo -e "\n"
+        echo -e ""
     fi
     cp -f p10k.zsh ~/.config/ezsh/
 }
