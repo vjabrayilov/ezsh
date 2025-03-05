@@ -71,6 +71,7 @@ function instal_omz {
         git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
     else
         git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.config/ezsh/oh-my-zsh > /dev/null 2>&1
+        echo -e "\n"
     fi
     cp -f p10k.zsh ~/.config/ezsh/
 }
@@ -175,13 +176,13 @@ function install_marker {
 }
 
 function install_todo {
-    echo -e "${PURPLE}Installing todo.sh\n${NC}"
+    echo -e "${PURPLE}Installing todo.sh${NC}"
     if [ ! -L ~/.config/ezsh/todo/bin/todo.sh ]; then
         echo -e "${YELLOW}Installing todo.sh in ~/.config/ezsh/todo\n${NC}"
         mkdir -p ~/.config/ezsh/bin
         mkdir -p ~/.config/ezsh/todo
         wget -q --show-progress "https://github.com/todotxt/todo.txt-cli/releases/download/v2.12.0/todo.txt_cli-2.12.0.tar.gz" -P ~/.config/ezsh/ > /dev/null 2>&1
-        tar xvf ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz -C ~/.config/ezsh/todo --strip 1 && rm ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz > /dev/null 2>&1
+        tar xvf ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz -C ~/.config/ezsh/todo --strip 1 > /dev/null 2>&1 && rm ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz > /dev/null 2>&1
         ln -s -f ~/.config/ezsh/todo/todo.sh ~/.config/ezsh/bin/todo.sh     # so only .../bin is included in $PATH
         ln -s -f ~/.config/ezsh/todo/todo.cfg ~/.todo.cfg     # it expects it there or ~/todo.cfg or ~/.todo/config
     else
