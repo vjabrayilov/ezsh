@@ -38,7 +38,7 @@ function install_dependencies {
 }
 
 function backup_old_configs {
-    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
+    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${DATE}${NC}"
     if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}" &>/dev/null; then
         echo -e "${YELLOW}Backed up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     else
@@ -47,8 +47,8 @@ function backup_old_configs {
 }
 
 function ezsh_dir_structure {
-    echo -e "${PURPLE}Creating ezsh directory structure\n${NC}"
-    echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'\n
+    echo -e "${PURPLE}Creating ezsh directory structure${NC}"
+    echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'
     Place your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
 
     mkdir -p ~/.config/ezsh/zshrc # PLACE YOUR ZSHRC CONFIGURATIONS OVER THERE
@@ -60,17 +60,17 @@ function ezsh_dir_structure {
 }
 
 function instal_omz {
-    echo -e "${PURPLE}Installing oh-my-zsh\n${NC}"
+    echo -e "${PURPLE}Installing oh-my-zsh${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh ]; then
         echo -e "${GREEN}oh-my-zsh is already installed\n${NC}"
-        git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git
+        git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
     elif [ -d ~/.oh-my-zsh ]; then
         echo -e "${GREEN}oh-my-zsh in already installed at '~/.oh-my-zsh'. Moving it to '~/.config/ezsh/oh-my-zsh'${NC}"
         export ZSH="$HOME/.config/ezsh/oh-my-zsh"
         mv ~/.oh-my-zsh ~/.config/ezsh/oh-my-zsh
-        git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git
+        git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.config/ezsh/oh-my-zsh
+        git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.config/ezsh/oh-my-zsh > /dev/null 2>&1
     fi
     cp -f p10k.zsh ~/.config/ezsh/
 }
