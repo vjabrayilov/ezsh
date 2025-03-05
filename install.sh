@@ -48,8 +48,7 @@ function backup_old_configs {
 
 function ezsh_dir_structure {
     echo -e "${PURPLE}Creating ezsh directory structure${NC}"
-    echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'
-    Place your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
+    echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'\nPlace your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
 
     mkdir -p ~/.config/ezsh/zshrc # PLACE YOUR ZSHRC CONFIGURATIONS OVER THERE
     mkdir -p ~/.cache/zsh/        # this will be used to store .zcompdump zsh completion cache files which normally clutter $HOME
@@ -112,11 +111,11 @@ function install_omz_plugins {
 
 
 function install_fonts {
-    echo -e "${PURPLE}Installing Nerd Fonts version of Hack, Roboto Mono, DejaVu Sans Mono\n${NC}"
+    echo -e "${PURPLE}Installing fonts\n${NC}"
 
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/
-    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/
+    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/ > /dev/null 2>&1
+    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/ > /dev/null 2>&1
+    wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/ > /dev/null 2>&1
 
     fc-cache -fv ~/.fonts
 }
@@ -124,9 +123,9 @@ function install_fonts {
 function install_p10k {
     echo -e "${PURPLE}Installing Powerlevel10k\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k ]; then
-        cd ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k && git pull
+        cd ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k && git pull > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k > /dev/null 2>&1
     fi
 }
 
@@ -136,7 +135,7 @@ function install_fzf {
         cd ~/.config/ezsh/fzf && git pull
         ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
     else
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/ezsh/fzf
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/ezsh/fzf > /dev/null 2>&1
         ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
     fi
 }
@@ -146,16 +145,16 @@ function install_k {
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/k ]; then
         cd ~/.config/ezsh/oh-my-zsh/custom/plugins/k && git pull
     else
-        git clone --depth 1 https://github.com/supercrabtree/k ~/.config/ezsh/oh-my-zsh/custom/plugins/k
+        git clone --depth 1 https://github.com/supercrabtree/k ~/.config/ezsh/oh-my-zsh/custom/plugins/k > /dev/nul 2>&1
     fi
 }
 
 function install_fzf_tab {
     echo -e "${PURPLE}Installing fzf-tab\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab ]; then
-        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab && git pull
+        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab && git pull > /dev/null 2>&1
     else
-        git clone --depth 1 https://github.com/Aloxaf/fzf-tab ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab
+        git clone --depth 1 https://github.com/Aloxaf/fzf-tab ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab > /dev/null 2>&1
     fi
 }
 
@@ -164,7 +163,7 @@ function install_marker {
     if [ -d ~/.config/ezsh/marker ]; then
         cd ~/.config/ezsh/marker && git pull
     else
-        git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker
+        git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker > /dev/null 2>&1
     fi
 
     if ~/.config/ezsh/marker/install.py; then
@@ -180,7 +179,7 @@ function install_todo {
         echo -e "${YELLOW}Installing todo.sh in ~/.config/ezsh/todo\n${NC}"
         mkdir -p ~/.config/ezsh/bin
         mkdir -p ~/.config/ezsh/todo
-        wget -q --show-progress "https://github.com/todotxt/todo.txt-cli/releases/download/v2.12.0/todo.txt_cli-2.12.0.tar.gz" -P ~/.config/ezsh/
+        wget -q --show-progress "https://github.com/todotxt/todo.txt-cli/releases/download/v2.12.0/todo.txt_cli-2.12.0.tar.gz" -P ~/.config/ezsh/ > /dev/null 2>&1
         tar xvf ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz -C ~/.config/ezsh/todo --strip 1 && rm ~/.config/ezsh/todo.txt_cli-2.12.0.tar.gz
         ln -s -f ~/.config/ezsh/todo/todo.sh ~/.config/ezsh/bin/todo.sh     # so only .../bin is included in $PATH
         ln -s -f ~/.config/ezsh/todo/todo.cfg ~/.todo.cfg     # it expects it there or ~/todo.cfg or ~/.todo/config
