@@ -26,13 +26,13 @@ done
 
 function install_dependencies {
     echo -e "${PURPLE}Installing dependencies\n${NC}"
-    if command -v zsh &>/dev/null && command -v git &>/dev/null && command -v wget &>/dev/null; then
+    if command -v zsh &>/dev/null && command -v git &>/dev/null && command -v wget &>/dev/null && command -v fc-cache &>/dev/null; then
         echo -e "${YELLOW}zsh, git, wget are already installed\n${NC}"
     else
-        if sudo apt install -y zsh git wget autoconf &>/dev/null || sudo brew install git zsh wget &>/dev/null; then
-            echo -e "${GREEN}zsh, git, wget are installed\n${NC}"
+        if sudo apt install -y zsh git wget autoconf fontconfig &>/dev/null || sudo brew install git zsh wget &>/dev/null; then
+            echo -e "${GREEN}zsh, git, wget, fontconfig are installed\n${NC}"
         else
-            echo -e "${RED}Failed to install  zsh git wget, plese install manually \n${NC}" && exit
+            echo -e "${RED}Failed to install  zsh git wget, fontconfig plese install manually \n${NC}" && exit
         fi
     fi
 }
