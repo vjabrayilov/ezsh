@@ -168,7 +168,7 @@ function install_marker {
         git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker > /dev/null 2>&1
     fi
 
-    if ~/.config/ezsh/marker/install.py; then
+    if sudo ~/.config/ezsh/marker/install.py; then
         echo -e "Installed Marker\n"
     else
         echo -e "Marker Installation Had Issues\n"
