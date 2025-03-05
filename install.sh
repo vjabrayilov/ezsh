@@ -6,6 +6,7 @@ noninteractive_flag=true
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+PURPLE='\033[0;35m'
 
 for arg in "$@"
 do
@@ -23,6 +24,7 @@ do
 done
 
 function install_dependencies {
+    echo -e "${PURPLE}Installing dependencies\n${NC}"
     if command -v zsh &>/dev/null && command -v git &>/dev/null && command -v wget &>/dev/null; then
         echo -e "${YELLOW}zsh, git, wget are already installed\n${NC}"
     else
@@ -35,6 +37,7 @@ function install_dependencies {
 }
 
 function backup_old_configs {
+    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}"; then
         echo -e "${YELLOW}Backed up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     else
@@ -43,6 +46,7 @@ function backup_old_configs {
 }
 
 function ezsh_dir_structure {
+    echo -e "${PURPLE}Creating ezsh directory structure\n${NC}"
     echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'\n
         Place your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
 
@@ -55,7 +59,7 @@ function ezsh_dir_structure {
 }
 
 function instal_omz {
-    echo -e "${YELLOW}Installing oh-my-zsh\n${NC}"
+    echo -e "${PURPLE}Installing oh-my-zsh\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh ]; then
         echo -e "${GREEN}oh-my-zsh is already installed\n${NC}"
         git -C ~/.config/ezsh/oh-my-zsh remote set-url origin https://github.com/ohmyzsh/ohmyzsh.git
@@ -78,6 +82,7 @@ function setup_zcompdump {
 }
 
 function install_omz_plugins {
+    echo -e "${PURPLE}Installing oh-my-zsh plugins\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions ]; then
         cd ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions && git pull
     else
@@ -105,7 +110,7 @@ function install_omz_plugins {
 
 
 function install_fonts {
-    echo -e "${YELLOW}Installing Nerd Fonts version of Hack, Roboto Mono, DejaVu Sans Mono\n${NC}"
+    echo -e "${PURPLE}Installing Nerd Fonts version of Hack, Roboto Mono, DejaVu Sans Mono\n${NC}"
 
     wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/
     wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/
@@ -115,6 +120,7 @@ function install_fonts {
 }
 
 function install_p10k {
+    echo -e "${PURPLE}Installing Powerlevel10k\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k ]; then
         cd ~/.config/ezsh/oh-my-zsh/custom/themes/powerlevel10k && git pull
     else
@@ -123,6 +129,7 @@ function install_p10k {
 }
 
 function install_fzf {
+    echo -e "${PURPLE}Installing fzf\n${NC}"
     if [ -d ~/.~/.config/ezsh/fzf ]; then
         cd ~/.config/ezsh/fzf && git pull
         ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
@@ -133,6 +140,7 @@ function install_fzf {
 }
 
 function install_k {
+    echo -e "${PURPLE}Installing k\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/k ]; then
         cd ~/.config/ezsh/oh-my-zsh/custom/plugins/k && git pull
     else
@@ -141,6 +149,7 @@ function install_k {
 }
 
 function install_fzf_tab {
+    echo -e "${PURPLE}Installing fzf-tab\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab ]; then
         cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab && git pull
     else
@@ -149,6 +158,7 @@ function install_fzf_tab {
 }
 
 function install_marker {
+    echo -e "${PURPLE}Installing Marker\n${NC}"
     if [ -d ~/.config/ezsh/marker ]; then
         cd ~/.config/ezsh/marker && git pull
     else
@@ -163,6 +173,7 @@ function install_marker {
 }
 
 function install_todo {
+    echo -e "${PURPLE}Installing todo.sh\n${NC}"
     if [ ! -L ~/.config/ezsh/todo/bin/todo.sh ]; then
         echo -e "${YELLOW}Installing todo.sh in ~/.config/ezsh/todo\n${NC}"
         mkdir -p ~/.config/ezsh/bin
