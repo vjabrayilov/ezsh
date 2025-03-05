@@ -37,8 +37,8 @@ function install_dependencies {
 }
 
 function backup_old_configs {
-    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
-    if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}"; then
+    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${date}\n${NC}"
+    if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}" &>/dev/null; then
         echo -e "${YELLOW}Backed up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     else
         echo -e "${YELLOW}No existing .zshrc found\n${NC}"
@@ -48,7 +48,7 @@ function backup_old_configs {
 function ezsh_dir_structure {
     echo -e "${PURPLE}Creating ezsh directory structure\n${NC}"
     echo -e "${YELLOW}The setup will be installed in '${HOME}/.config/ezsh'\n
-        Place your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
+    Place your personal zshrc config files under '${HOME}/.config/ezsh/zshrc/'\n${NC}"
 
     mkdir -p ~/.config/ezsh/zshrc # PLACE YOUR ZSHRC CONFIGURATIONS OVER THERE
     mkdir -p ~/.cache/zsh/        # this will be used to store .zcompdump zsh completion cache files which normally clutter $HOME
