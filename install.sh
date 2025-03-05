@@ -27,10 +27,10 @@ done
 
 function install_dependencies {
     echo -e "${PURPLE}Installing dependencies\n${NC}"
-    if command -v zsh &>/dev/null && command -v git &>/dev/null && command -v wget &>/dev/null && command -v fc-cache &>/dev/null; then
-        echo -e "${YELLOW}zsh, git, wget are already installed\n${NC}"
+    if command -v zsh &>/dev/null && command -v git &>/dev/null && command -v wget &>/dev/null && command -v fc-cache &>/dev/null && command -v python3 &>/dev/null; then
+        echo -e "${YELLOW}zsh, git, wget, fontconfig are already installed\n${NC}"
     else
-        if sudo apt install -y zsh git wget autoconf fontconfig &>/dev/null || sudo brew install git zsh wget &>/dev/null; then
+        if sudo apt install -y zsh git wget autoconf fontconfig python3 &>/dev/null || sudo brew install git zsh wget python3 &>/dev/null; then
             echo -e "${GREEN}zsh, git, wget, fontconfig are installed\n${NC}"
         else
             echo -e "${RED}Failed to install  zsh git wget, fontconfig plese install manually \n${NC}" && exit
@@ -137,7 +137,7 @@ function install_fzf {
         ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
     else
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/ezsh/fzf > /dev/null 2>&1
-        ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
+        ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc > /dev/null 2>&1
     fi
 }
 
@@ -162,7 +162,7 @@ function install_fzf_tab {
 function install_marker {
     echo -e "${PURPLE}Installing Marker\n${NC}"
     if [ -d ~/.config/ezsh/marker ]; then
-        cd ~/.config/ezsh/marker && git pull
+        cd ~/.config/ezsh/marker && git pull > /dev/null 2>&1
     else
         git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker > /dev/null 2>&1
     fi
