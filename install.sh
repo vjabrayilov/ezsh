@@ -7,6 +7,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
+DATE=$(date +"%Y-%m-%d")
 
 for arg in "$@"
 do
@@ -37,7 +38,7 @@ function install_dependencies {
 }
 
 function backup_old_configs {
-    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${date}\n${NC}"
+    echo -e "${PURPLE}Backing up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     if mv -n "${HOME}/.zshrc" "${HOME}/.zshrc-backup-${DATE}" &>/dev/null; then
         echo -e "${YELLOW}Backed up the current .zshrc to .zshrc-backup-${DATE}\n${NC}"
     else
