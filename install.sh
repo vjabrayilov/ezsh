@@ -174,7 +174,7 @@ function install_marker {
         export SHELL="/bin/bash"
     fi
 
-    if  ~/.config/ezsh/marker/install.py; then
+    if  ~/.config/ezsh/marker/install.py > /dev/null 2>&1; then
         echo -e "Installed Marker\n"
     else
         echo -e "Marker Installation Had Issues\n"
@@ -200,11 +200,11 @@ function cp_history {
     if [ "$cp_hist_flag" = true ]; then
         echo -e "${YELLOW}\nCopying bash_history to zsh_history\n${NC}"
         if command -v python &>/dev/null; then
-            wget -q --show-progress https://gist.githubusercontent.com/muendelezaji/c14722ab66b505a49861b8a74e52b274/raw/49f0fb7f661bdf794742257f58950d209dd6cb62/bash-to-zsh-hist.py
+            wget -q --show-progress https://gist.githubusercontent.com/muendelezaji/c14722ab66b505a49861b8a74e52b274/raw/49f0fb7f661bdf794742257f58950d209dd6cb62/bash-to-zsh-hist.py > /dev/null 2>&1
             cat ~/.bash_history | python bash-to-zsh-hist.py >> ~/.zsh_history
         else
             if command -v python3 &>/dev/null; then
-                wget -q --show-progress https://gist.githubusercontent.com/muendelezaji/c14722ab66b505a49861b8a74e52b274/raw/49f0fb7f661bdf794742257f58950d209dd6cb62/bash-to-zsh-hist.py
+                wget -q --show-progress https://gist.githubusercontent.com/muendelezaji/c14722ab66b505a49861b8a74e52b274/raw/49f0fb7f661bdf794742257f58950d209dd6cb62/bash-to-zsh-hist.py > /dev/null 2>&1
                 cat ~/.bash_history | python3 bash-to-zsh-hist.py >> ~/.zsh_history
             else
                 echo "${RED}Python is not installed, can't copy bash_history to zsh_history\n${NC}"
