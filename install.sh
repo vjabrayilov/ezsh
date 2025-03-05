@@ -77,6 +77,7 @@ function instal_omz {
 
 
 function setup_zcompdump {
+    echo -e "${PURPLE}Setting up zcompdump\n${NC}"
     if [ -f ~/.zcompdump ]; then
         mv ~/.zcompdump* ~/.cache/zsh/
     fi
@@ -85,27 +86,27 @@ function setup_zcompdump {
 function install_omz_plugins {
     echo -e "${PURPLE}Installing oh-my-zsh plugins\n${NC}"
     if [ -d ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions ]; then
-        cd ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions && git pull
+        cd ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions && git pull > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions
+        git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions > /dev/null 2>&1
     fi
 
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
-        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting && git pull
+        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting && git pull > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
     fi
 
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions ]; then
-        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions && git pull
+        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions && git pull > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/zsh-users/zsh-completions ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions
+        git clone --depth=1 https://github.com/zsh-users/zsh-completions ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions > /dev/null 2>&1
     fi
 
     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search ]; then
-        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search && git pull
+        cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search && git pull > /dev/null 2>&1
     else
-        git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search
+        git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search > /dev/null 2>&1
     fi
 }
 
