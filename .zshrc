@@ -18,7 +18,7 @@ source "$HOME/.config/ezsh/ezshrc.zsh"
 
 # To customize prompt look, edit ~/.config/ezsh/p10k.zsh or run `p10k configure`
 [[ ! -f ~/.config/ezsh/p10k.zsh ]] || source ~/.config/ezsh/p10k.zsh
-
+[[ -s "$HOME/.config/ezsh/marker/marker.sh" ]] && source "$HOME/.config/ezsh/marker/marker.sh"
 # Any zshrc configurations under the folder ~/.config/ezsh/zshrc/ will override the default ezsh configs.
 # Place all of your personal configurations over there
 ZSH_CONFIGS_DIR="$HOME/.config/ezsh/zshrc"
