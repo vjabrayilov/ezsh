@@ -117,7 +117,7 @@ function install_fonts {
     wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/ > /dev/null 2>&1
     wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/ > /dev/null 2>&1
 
-    fc-cache -fv ~/.fonts
+    fc-cache -fv ~/.fonts > /dev/null 2>&1
 }
 
 function install_p10k {
@@ -132,7 +132,7 @@ function install_p10k {
 function install_fzf {
     echo -e "${PURPLE}Installing fzf\n${NC}"
     if [ -d ~/.~/.config/ezsh/fzf ]; then
-        cd ~/.config/ezsh/fzf && git pull
+        cd ~/.config/ezsh/fzf && git pull > /dev/null 2>&1
         ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
     else
         git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/ezsh/fzf > /dev/null 2>&1
