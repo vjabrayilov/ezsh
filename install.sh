@@ -195,6 +195,15 @@ function install_todo {
         echo -e "${GREEN}todo.sh is already instlled in ~/.config/ezsh/todo/bin/\n${NC}"
     fi
 }
+ function install_fzf_git {
+     echo -e "${PURPLE}Installing fzf-git\n${NC}"
+     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh ]; then
+         cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh && git pull > /dev/null 2>&1
+     else
+         git clone  https://github.com/junegunn/fzf-git.sh ~/.config/ezsh/oh-my-zsg/custom/plugins/fzf-git.sh --depth 1
+     fi
+
+ }
 
 function cp_history {
     if [ "$cp_hist_flag" = true ]; then
