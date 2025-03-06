@@ -255,6 +255,7 @@ function main {
     install_fzf_tab
     install_marker
     install_todo
+    install_fzf_git
     cp_history
     set_default
 }
