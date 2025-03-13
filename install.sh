@@ -197,10 +197,10 @@ function install_todo {
 }
  function install_fzf_git {
      echo -e "${PURPLE}Installing fzf-git\n${NC}"
-     if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh ]; then
-         cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh && git pull > /dev/null 2>&1
+     if [ -d ~/fzf-git.sh ]; then
+         cd ~/fzf-git.sh && git pull > /dev/null 2>&1
      else
-         git clone  https://github.com/junegunn/fzf-git.sh ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh --depth 1
+         git clone  https://github.com/junegunn/fzf-git.sh ~/fzf-git.sh --depth 1
      fi
 
  }
