@@ -227,12 +227,12 @@ function cp_history {
 function set_default {
     if [ "$noninteractive_flag" = true ]; then
         echo -e "${GREEN}Installation complete, exit terminal and enter a new zsh session\n"
-        echo -e "Make sure to change zsh to default shell by running: chsh -s $(which zsh)"
+        echo -e "Make sure to change zsh to default shell by running: chsh -s $(which zsh)${NC}"
         # echo -e "In a new zsh session manually run: build-fzf-tab-module${NC}"
     else
         echo -e "${YELLOW}\nSudo access is needed to change default shell\n${NC}"
         if chsh -s $(which zsh) && /bin/zsh -i -c 'omz update'; then
-            echo -e "${GREEN}Installation complete, exit terminal and enter a new zsh session"
+            echo -e "${GREEN}Installation complete, exit terminal and enter a new zsh session${NC}"
             # echo -e "In a new zsh session manually run: build-fzf-tab-module${NC}"
         else
             echo -e "${RED}Something is wrong${NC}"
