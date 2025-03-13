@@ -200,7 +200,7 @@ function install_todo {
      if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh ]; then
          cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh && git pull > /dev/null 2>&1
      else
-         git clone  https://github.com/junegunn/fzf-git.sh ~/.config/ezsh/oh-my-zsg/custom/plugins/fzf-git.sh --depth 1
+         git clone  https://github.com/junegunn/fzf-git.sh ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-git.sh --depth 1
      fi
 
  }
